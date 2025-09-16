@@ -5,8 +5,8 @@ export default function Template({ children }: { children: React.ReactNode }) {
 
   return (
     <>
-      <h1>Template {count}</h1>
-      <button onClick={() => setCount(count + 1)}>+</button>
+      {/* <h1>Template {count}</h1>
+      <button onClick={() => setCount(count + 1)}>+</button> */}
       {children}
     </>
   )

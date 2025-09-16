@@ -25,10 +25,10 @@ export default function RootLayout({
     <html lang="en">
       <body suppressHydrationWarning className={inter.className}>
         <Navbar />
-        <div>
+        {/* <div>
           <h1>Layout {count}</h1>
           <button onClick={() => setCount(count + 1)}>+</button>
-        </div>
+        </div> */}
         {children}
       </body>
     </html>
