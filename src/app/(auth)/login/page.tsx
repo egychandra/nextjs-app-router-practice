@@ -1,6 +1,22 @@
+"use client";
+
 import Link from "next/link";
 
 const LoginPage = () => {
+
+  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    fetch("/api/auth/login", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json"
+      },
+      body: JSON.stringify({
+        email: e.currentTarget.email.value,
+        password: e.currentTarget.password.value
+      })
+    })
+  }
 
   return (
     <main className="min-h-screen bg-gray-900">
@@ -10,23 +26,7 @@ const LoginPage = () => {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6">
-            <div>
-              <label htmlFor="fullname" className="block text-sm/6 font-medium text-gray-100">
-                Fullname
-              </label>
-              <div className="mt-2">
-                <input
-                  id="fullname"
-                  name="fullname"
-                  type="text"
-                  required
-                  autoComplete="fullname"
-                  className="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
-                />
-              </div>
-            </div>
-
+          <form className="space-y-6" onSubmit={handleLogin}>
             <div>
               <label htmlFor="email" className="block text-sm/6 font-medium text-gray-100">
                 Email address
