@@ -3,13 +3,15 @@ import { NextRequest, NextResponse } from "next/server";
 const data = [
     {
       id: 1,
-      name: "Baju Baru",
-      price: 250000
+      title: "Baju Baru",
+      price: 250000,
+      image: "https://static.nike.com/a/images/q_auto:eco/t_product_v1/f_auto/dpr_1.3/h_466,c_limit/a80d1905-5296-4aa9-855a-1d617e3c98f6/air-force-1-low-retro-shoes-2uCuGnVm.png"
     },
     {
       id: 2,
-      name: "Baju Lama",
-      price: 300000
+      title: "Baju Lama",
+      price: 300000,
+      image: "https://static.nike.com/a/images/q_auto:eco/t_product_v1/f_auto/dpr_1.3/h_466,c_limit/ab9e6fa9-4f2f-4aa1-ad84-774c20ad0ba4/air-force-1-low-retro-shoes-2uCuGnVm.png"
     }
   ]
 
