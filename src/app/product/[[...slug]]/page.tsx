@@ -5,7 +5,7 @@ interface ProductPageProps {
 }
 
 async function getData() {
-    // const res = await fetch("https://fakestoreapi.com/products");
+    // const res = await fetch("https://fakestoreapi.com/products", { cache: "no-store" });
     const res = await fetch("http://localhost:3000/api/product", {
       cache: 'force-cache',
       next: {
