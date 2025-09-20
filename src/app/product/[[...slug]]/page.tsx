@@ -7,7 +7,11 @@ interface ProductPageProps {
 async function getData() {
     // const res = await fetch("https://fakestoreapi.com/products");
     const res = await fetch("http://localhost:3000/api/product", {
-      cache: 'no-store'
+      cache: 'force-cache',
+      next: {
+        // revalidate: 30,
+        tags: ['products']
+      }
     });
 
     if(!res.ok) {
@@ -47,7 +51,7 @@ const ProductPage = async (props: ProductPageProps ) => {
               <span
                 className="text-3xl font-bold text-gray-900 dark:text-white"
               >
-                ${product.price}
+                IDR {product.price}
               </span>
               <a
                 href="#"
