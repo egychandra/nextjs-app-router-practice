@@ -23,11 +23,11 @@ const AdminProductPage = () => {
   }
 
   return (
-    <div className="m-5">
+    <div className="w-3/6 h-96 bg-gray-300 rounded-[12px] flex justify-center items-center">
       <h1>Admin Product Page</h1>
       <p>{status}</p>
       <button
-        className="text-white bg-blue-500 rounded-md p-3 cursor-pointer"
+        className="text-white bg-blue-500 rounded-md p-3 m-5 cursor-pointer"
         onClick={revalidate}
       >
         Revalidate

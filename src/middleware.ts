@@ -5,7 +5,7 @@ export function middleware(request: NextRequest) {
   // if(request.nextUrl.pathname.startsWith("/about")) {
   //   return NextResponse.redirect(new URL("/", request.url));
   // }
-  const isLogin = false;
+  const isLogin = true;
   if(!isLogin) {
     return NextResponse.redirect(new URL("/login", request.url));
   }
