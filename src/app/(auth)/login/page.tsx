@@ -1,21 +1,43 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
 
 const LoginPage = () => {
+  const router = useRouter();
+  // const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+  //   fetch("/api/auth/login", {
+  //     method: "POST",
+  //     headers: {
+  //       "content-type": "application/json"
+  //     },
+  //     body: JSON.stringify({
+  //       email: e.currentTarget.email.value,
+  //       password: e.currentTarget.password.value
+  //     })
+  //   })
+  // }
 
-  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleLogin = async (e: any) => {
     e.preventDefault();
-    fetch("/api/auth/login", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json"
-      },
-      body: JSON.stringify({
-        email: e.currentTarget.email.value,
-        password: e.currentTarget.password.value
-      })
-    })
+    try {
+      const res = await signIn("credentials", {
+        redirect: false,
+        callbackUrl: "/dashboard",
+        email: e.target.email.value,
+        password: e.target.password.value
+      });
+
+      if(!res?.error) {
+        router.push("/dashboard");
+      } else {
+        console.error(res.error);
+      }
+    } catch(error) {
+      console.error(error);
+    }
   }
 
   return (

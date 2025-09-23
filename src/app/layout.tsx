@@ -1,12 +1,11 @@
-"use client"
+"use client";
 
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { usePathname } from 'next/navigation'
+import { SessionProvider } from 'next-auth/react'
 import Navbar from './navbar'
-
-import { useState } from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -23,17 +22,14 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   const pathname = usePathname();
-  const [count, setCount] = useState(0);
 
   return (
     <html lang="en">
       <body suppressHydrationWarning className={inter.className}>
-        {!disabledNavbar.includes(pathname) && <Navbar />}
-        {/* <div>
-          <h1>Layout {count}</h1>
-          <button onClick={() => setCount(count + 1)}>+</button>
-        </div> */}
-        {children}
+        <SessionProvider>
+          {!disabledNavbar.includes(pathname) && <Navbar />}
+          {children}
+        </SessionProvider>
       </body>
     </html>
   )
